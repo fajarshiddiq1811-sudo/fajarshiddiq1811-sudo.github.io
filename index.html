@@ -1,1 +1,527 @@
-
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top1Percent — Don't Trade Like 99</title>
+  <meta name="description" content="Platform trading Indonesia terlengkap. Broker review, kalkulator, news, edukasi, dan komunitas trader profesional.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --g:#39FF14;--gold:#FFD700;--gold2:#FFA500;
+      --k:#050505;--k2:#0a0a0a;--k3:#111111;--k4:#161616;
+      --t:#F0EDE8;--tm:#888;--td:#444;
+      --border:rgba(57,255,20,0.1);--border-gold:rgba(255,215,0,0.12);
+      --glow:0 0 30px rgba(57,255,20,0.3);--glow-gold:0 0 30px rgba(255,215,0,0.3);
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--k);color:var(--t);font-family:'Barlow',sans-serif;overflow-x:hidden;}
+ 
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(5,5,5,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all 0.3s;}
+    nav.scrolled{padding:0.7rem 2rem;}
+    .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.05em;color:var(--t);text-decoration:none;display:flex;align-items:center;gap:0.2rem;flex-shrink:0;}
+    .nav-logo .ng{color:var(--g);}
+    .nav-logo .logo-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.55rem;font-weight:700;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;border:1px solid rgba(255,215,0,0.4);padding:0.1rem 0.35rem;margin-left:0.4rem;}
+    .nav-links{display:flex;align-items:center;gap:0.1rem;list-style:none;}
+    .nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--tm);text-decoration:none;padding:0.45rem 0.6rem;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--t);}
+    .nav-cta{color:var(--k)!important;background:var(--g);padding:0.45rem 1rem!important;font-weight:800!important;}
+    .nav-cta:hover{box-shadow:var(--glow);}
+    .nav-ham{display:none;background:none;border:1px solid var(--border);color:var(--t);padding:0.4rem 0.6rem;cursor:pointer;font-size:1rem;}
+    .nav-mobile{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(5,5,5,0.98);border-bottom:1px solid var(--border);padding:1rem;z-index:99;flex-direction:column;gap:0.3rem;}
+    .nav-mobile.open{display:flex;}
+    .nav-mobile a{font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--tm);text-decoration:none;padding:0.7rem 1rem;border-bottom:1px solid var(--border);}
+    .nav-mobile a:last-child{color:var(--k);background:var(--g);text-align:center;margin-top:0.5rem;}
+ 
+    /* ORBS */
+    .orb{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;}
+    .orb-1{width:400px;height:400px;background:radial-gradient(circle,rgba(57,255,20,0.1),transparent);top:-150px;left:-150px;animation:orbFloat1 12s ease-in-out infinite;}
+    .orb-2{width:350px;height:350px;background:radial-gradient(circle,rgba(255,215,0,0.07),transparent);bottom:-100px;right:-100px;animation:orbFloat2 15s ease-in-out infinite;}
+    @keyframes orbFloat1{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,40px)}}
+    @keyframes orbFloat2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,-30px)}}
+ 
+    /* HERO */
+    .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:7rem 1.5rem 5rem;text-align:center;}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(57,255,20,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(57,255,20,0.04) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);}
+    .scanlines{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.02) 2px,rgba(0,0,0,0.02) 4px);pointer-events:none;}
+ 
+    /* TICKER - TradingView */
+    .ticker-wrap{position:absolute;top:56px;left:0;right:0;z-index:5;border-bottom:1px solid var(--border);}
+    .ticker-wrap iframe{display:block;}
+ 
+    /* HERO CONTENT */
+    .hero-eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;font-weight:800;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center;gap:0.8rem;opacity:0;animation:fadeUp 0.8s 0.3s forwards;}
+    .hero-eyebrow::before,.hero-eyebrow::after{content:'';width:30px;height:1px;background:var(--gold);opacity:0.5;}
+    .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,11vw,11rem);line-height:0.88;letter-spacing:0.02em;position:relative;z-index:2;opacity:0;animation:fadeUp 0.8s 0.5s forwards;}
+    .hero-title .line1{color:var(--t);display:block;}
+    .hero-title .line2{color:transparent;-webkit-text-stroke:1px rgba(57,255,20,0.35);display:block;}
+    .hero-title .line3{color:var(--g);display:block;text-shadow:0 0 60px rgba(57,255,20,0.3);}
+    .hero-title .gold-word{color:var(--gold);}
+    .hero-sub{font-family:'Barlow Condensed',sans-serif;font-size:clamp(0.85rem,2.5vw,1.05rem);font-weight:300;letter-spacing:0.12em;text-transform:uppercase;color:var(--tm);margin-top:1.5rem;opacity:0;animation:fadeUp 0.8s 0.7s forwards;}
+    .hero-sub strong{color:var(--t);font-weight:600;}
+    .hero-stats{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem 2.5rem;margin-top:2.5rem;opacity:0;animation:fadeUp 0.8s 0.9s forwards;}
+    .hstat{text-align:center;}
+    .hstat-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,2.8rem);line-height:1;color:var(--g);}
+    .hstat-num .gold{color:var(--gold);}
+    .hstat-label{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--tm);margin-top:0.2rem;}
+    .hero-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:0.8rem;margin-top:2.5rem;opacity:0;animation:fadeUp 0.8s 1.1s forwards;}
+    .btn-primary{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;background:var(--g);color:var(--k);padding:0.85rem 2.2rem;text-decoration:none;transition:all 0.3s;position:relative;overflow:hidden;display:inline-block;}
+    .btn-primary::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-100%);transition:transform 0.3s;}
+    .btn-primary:hover::before{transform:translateX(0);}
+    .btn-primary span{position:relative;z-index:1;}
+    .btn-primary:hover{box-shadow:var(--glow-gold);}
+    .btn-secondary{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;background:transparent;color:var(--t);padding:0.85rem 2.2rem;text-decoration:none;border:1px solid var(--border);transition:all 0.3s;display:inline-block;}
+    .btn-secondary:hover{border-color:var(--g);color:var(--g);box-shadow:var(--glow);}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+ 
+    /* MARQUEE */
+    .marquee-section{padding:2rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--k2);overflow:hidden;}
+    .marquee-track{display:flex;animation:marquee 25s linear infinite;}
+    .marquee-item{flex-shrink:0;padding:0 2rem;font-family:'Bebas Neue',sans-serif;font-size:0.9rem;letter-spacing:0.15em;color:var(--td);display:flex;align-items:center;gap:1rem;white-space:nowrap;}
+    .dot{width:5px;height:5px;border-radius:50%;background:var(--g);box-shadow:0 0 6px var(--g);flex-shrink:0;}
+    .dot-gold{background:var(--gold)!important;box-shadow:0 0 6px var(--gold)!important;}
+    @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+ 
+    /* SECTION */
+    .section-label{font-family:'Barlow Condensed',sans-serif;font-size:0.62rem;font-weight:800;letter-spacing:0.4em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;display:flex;align-items:center;gap:0.8rem;}
+    .section-label::before{content:'';width:25px;height:1px;background:var(--gold);opacity:0.6;}
+    .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,4rem);line-height:0.95;letter-spacing:0.02em;}
+    .section-title .g{color:var(--g);}
+    .section-title .gold{color:var(--gold);}
+ 
+    /* PRODUCTS */
+    .products{padding:5rem 1.5rem;max-width:1400px;margin:0 auto;}
+    .products-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
+    .products-count{font-family:'Bebas Neue',sans-serif;font-size:5rem;color:transparent;-webkit-text-stroke:1px var(--border);line-height:1;}
+    .products-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1px;background:var(--border);}
+    .pcard{background:var(--k2);padding:2rem;text-decoration:none;position:relative;overflow:hidden;transition:all 0.4s;display:block;}
+    .pcard::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(57,255,20,0.04),transparent);opacity:0;transition:opacity 0.4s;}
+    .pcard:hover::before{opacity:1;}
+    .pcard:hover{background:var(--k3);}
+    .pcard:hover .pcard-arrow{transform:translate(4px,-4px);opacity:1;}
+    .pcard-num{font-family:'Bebas Neue',sans-serif;font-size:0.65rem;letter-spacing:0.3em;color:var(--td);margin-bottom:1.5rem;}
+    .pcard-icon{font-size:1.8rem;margin-bottom:1.2rem;display:block;}
+    .pcard-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:0.05em;color:var(--t);line-height:1;margin-bottom:0.7rem;}
+    .pcard-featured .pcard-title{font-size:2.2rem;}
+    .pcard-desc{font-family:'Barlow',sans-serif;font-size:0.78rem;color:var(--tm);line-height:1.7;}
+    .pcard-arrow{position:absolute;top:1.5rem;right:1.5rem;font-size:1.1rem;color:var(--g);opacity:0;transition:all 0.3s;}
+    .pcard-tag{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-size:0.58rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;padding:0.2rem 0.55rem;margin-top:1rem;}
+    .tag-green{background:rgba(57,255,20,0.08);color:var(--g);border:1px solid rgba(57,255,20,0.2);}
+    .tag-gold{background:rgba(255,215,0,0.08);color:var(--gold);border:1px solid rgba(255,215,0,0.2);}
+    .tag-red{background:rgba(255,68,68,0.08);color:#ff5555;border:1px solid rgba(255,68,68,0.2);}
+    .pcard-preview{margin-top:1.2rem;background:var(--k4);border:1px solid var(--border);padding:0.8rem;}
+    .preview-row{display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.04);font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;}
+    .preview-row:last-child{border-bottom:none;}
+    .prev-sym{color:var(--tm);}
+    .prev-up{color:var(--g);}
+ 
+    /* Grid spans desktop */
+    .pcard-featured{grid-column:span 5;grid-row:span 2;}
+    .pcard-lg{grid-column:span 5;}
+    .pcard-md{grid-column:span 4;}
+    .pcard-sm{grid-column:span 3;}
+    .pcard-7{grid-column:span 7;}
+    .pcard-5{grid-column:span 5;}
+ 
+    /* DIVIDER */
+    .divider{height:1px;background:linear-gradient(to right,transparent,var(--border),var(--border-gold),var(--border),transparent);margin:0 1.5rem;}
+ 
+    /* WHY */
+    .why{padding:5rem 1.5rem;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+    .why-right{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);}
+    .why-card{background:var(--k2);padding:1.8rem;}
+    .why-card-num{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--g);line-height:1;}
+    .why-card-num.gold{color:var(--gold);}
+    .why-card-label{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--tm);margin-top:0.4rem;}
+    .why-text{font-size:0.88rem;color:var(--tm);line-height:1.8;margin-top:1.2rem;}
+    .why-quote{margin-top:2rem;padding:1.2rem;border-left:3px solid var(--g);background:rgba(57,255,20,0.02);}
+    .why-quote p{font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-style:italic;color:var(--t);letter-spacing:0.04em;}
+    .why-quote cite{font-size:0.65rem;color:var(--gold);letter-spacing:0.2em;text-transform:uppercase;margin-top:0.4rem;display:block;}
+ 
+    /* DISCORD */
+    .discord-cta{padding:5rem 1.5rem;background:var(--k2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:3rem;flex-wrap:wrap;}
+    .dc-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,4vw,3.2rem);line-height:1;letter-spacing:0.02em;}
+    .dc-title .g{color:var(--g);}
+    .dc-sub{font-size:0.85rem;color:var(--tm);margin-top:0.8rem;line-height:1.7;}
+    .dc-right{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;}
+    .dc-stat-num{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--g);text-align:center;}
+    .dc-stat-label{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--tm);}
+ 
+    /* FOOTER */
+    footer{padding:3rem 1.5rem;background:var(--k);border-top:1px solid var(--border);}
+    .footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2.5rem;flex-wrap:wrap;gap:2rem;}
+    .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--t);}
+    .footer-logo .ng{color:var(--g);}
+    .footer-tagline{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--td);margin-top:0.3rem;}
+    .footer-links{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;}
+    .footer-col-title{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;font-weight:800;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;}
+    .footer-col a{display:block;font-size:0.78rem;color:var(--td);text-decoration:none;padding:0.25rem 0;transition:color 0.2s;}
+    .footer-col a:hover{color:var(--g);}
+    .footer-bottom{padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .footer-copy{font-size:0.7rem;color:var(--td);}
+    .footer-copy span{color:var(--tm);}
+    .footer-disclaimer{font-size:0.65rem;color:var(--td);max-width:450px;text-align:right;line-height:1.5;}
+ 
+    /* ===== MOBILE RESPONSIVE ===== */
+    @media(max-width:768px){
+      nav{padding:0.8rem 1rem;}
+      .nav-links{display:none;}
+      .nav-ham{display:block;}
+      .hero{padding:6rem 1rem 4rem;}
+      .hero-title{font-size:clamp(3rem,14vw,5rem);}
+      .hero-stats{gap:1.2rem 2rem;}
+      .hstat-num{font-size:2rem;}
+      .products{padding:3rem 1rem;}
+      .products-grid{grid-template-columns:1fr;}
+      .pcard-featured,.pcard-lg,.pcard-md,.pcard-sm,.pcard-7,.pcard-5{grid-column:span 1;grid-row:span 1;}
+      .products-header{flex-direction:column;}
+      .products-count{font-size:3rem;}
+      .why{grid-template-columns:1fr;gap:2.5rem;padding:3rem 1rem;}
+      .why-right{grid-template-columns:1fr 1fr;}
+      .discord-cta{padding:3rem 1rem;flex-direction:column;text-align:center;}
+      .dc-right{justify-content:center;}
+      .footer-links{grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+      .footer-top{flex-direction:column;}
+      .footer-bottom{flex-direction:column;text-align:center;}
+      .footer-disclaimer{text-align:center;max-width:100%;}
+      .divider{margin:0 1rem;}
+    }
+    @media(max-width:480px){
+      .hero-title{font-size:clamp(2.5rem,13vw,4rem);}
+      .hero-sub{font-size:0.78rem;letter-spacing:0.08em;}
+      .hero-ctas{flex-direction:column;width:100%;}
+      .btn-primary,.btn-secondary{text-align:center;width:100%;}
+      .footer-links{grid-template-columns:1fr 1fr;}
+      .why-card-num{font-size:2.2rem;}
+    }
+  </style>
+</head>
+<body>
+ 
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo"><span class="ng">TOP</span>1<span class="ng">PERCENT</span><span class="logo-tag">Pro</span></a>
+    <ul class="nav-links">
+      <li><a href="broker.html">Broker</a></li>
+      <li><a href="exchange.html">Exchange</a></li>
+      <li><a href="propfirm.html">PropFirm</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="kalkulator.html">Kalkulator</a></li>
+      <li><a href="edukasi.html">Edukasi</a></li>
+      <li><a href="liputan.html">Liputan</a></li>
+      <li><a href="https://discord.gg/Tc5GqnVwdm" target="_blank" class="nav-cta">Discord →</a></li>
+    </ul>
+    <button class="nav-ham" onclick="toggleMenu()" id="hamBtn">☰</button>
+  </nav>
+  <div class="nav-mobile" id="navMobile">
+    <a href="broker.html">Broker Review</a>
+    <a href="exchange.html">Exchange Review</a>
+    <a href="propfirm.html">PropFirm</a>
+    <a href="news.html">Trading News</a>
+    <a href="kalkulator.html">Kalkulator</a>
+    <a href="edukasi.html">Edukasi</a>
+    <a href="liputan.html">Liputan</a>
+    <a href="https://discord.gg/Tc5GqnVwdm" target="_blank">Join Discord →</a>
+  </div>
+ 
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="scanlines"></div>
+ 
+    <!-- REAL TIME TICKER - TradingView -->
+    <div class="ticker-wrap">
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {
+          "symbols": [
+            {"proName":"FX:EURUSD","title":"EUR/USD"},
+            {"proName":"FX:GBPUSD","title":"GBP/USD"},
+            {"proName":"FX:USDJPY","title":"USD/JPY"},
+            {"proName":"FX:AUDUSD","title":"AUD/USD"},
+            {"proName":"FX:XAUUSD","title":"Gold"},
+            {"proName":"BITSTAMP:BTCUSD","title":"Bitcoin"},
+            {"proName":"BITSTAMP:ETHUSD","title":"Ethereum"},
+            {"description":"IDX:BBCA","proName":"IDX:BBCA"},
+            {"description":"IDX:BBRI","proName":"IDX:BBRI"},
+            {"proName":"NYMEX:CL1!","title":"Oil WTI"}
+          ],
+          "showSymbolLogo": false,
+          "isTransparent": true,
+          "displayMode": "adaptive",
+          "colorTheme": "dark",
+          "locale": "id"
+        }
+        </script>
+      </div>
+    </div>
+ 
+    <div class="hero-eyebrow">Platform Trading Indonesia #1</div>
+    <h1 class="hero-title">
+      <span class="line1">DON'T TRADE</span>
+      <span class="line2">LIKE THE</span>
+      <span class="line3"><span class="gold-word">99</span> PERSEN</span>
+    </h1>
+    <p class="hero-sub">Semua yang kamu butuhkan untuk jadi <strong>trader profesional</strong> — 100% gratis</p>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-num">7<span style="font-size:1.2rem">+</span></div><div class="hstat-label">Tahun<br>Pengalaman</div></div>
+      <div class="hstat"><div class="hstat-num"><span class="gold">11</span></div><div class="hstat-label">Fitur<br>Lengkap</div></div>
+      <div class="hstat"><div class="hstat-num">14</div><div class="hstat-label">Broker<br>Direview</div></div>
+      <div class="hstat"><div class="hstat-num"><span class="gold">100</span><span style="font-size:1.2rem">%</span></div><div class="hstat-label">100%<br>Gratis</div></div>
+    </div>
+    <div class="hero-ctas">
+      <a href="#products" class="btn-primary"><span>Eksplorasi Fitur →</span></a>
+      <a href="https://discord.gg/Tc5GqnVwdm" target="_blank" class="btn-secondary">Join Discord</a>
+    </div>
+  </section>
+ 
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-item"><span class="dot"></span>BROKER REVIEW</div>
+      <div class="marquee-item"><span class="dot dot-gold"></span>EXCHANGE REVIEW</div>
+      <div class="marquee-item"><span class="dot"></span>PROP FIRM REVIEW</div>
+      <div class="marquee-item"><span class="dot dot-gold"></span>TRADING NEWS</div>
+      <div class="marquee-item"><span class="dot"></span>KALKULATOR TRADING</div>
+      <div class="marquee-item"><span class="dot dot-gold"></span>EDUKASI GRATIS</div>
+      <div class="marquee-item"><span class="dot"></span>NEWS CALENDAR</div>
+      <div class="marquee-item"><span class="dot dot-gold"></span>LIVE CHART</div>
+      <div class="marquee-item"><span class="dot"></span>LIPUTAN TOP1PERCENT</div>
+      <div class="marquee-item"><span class="dot dot-gold"></span>KOMUNITAS DISCORD</div>
+      <div class="marquee-item"><span class="dot"></span>BROKER REVIEW</div>
+      <div class="marquee-item"><span class="dot dot-gold"></span>EXCHANGE REVIEW</div>
+      <div class="marquee-item"><span class="dot"></span>PROP FIRM REVIEW</div>
+      <div class="marquee-item"><span class="dot dot-gold"></span>TRADING NEWS</div>
+      <div class="marquee-item"><span class="dot"></span>KALKULATOR TRADING</div>
+      <div class="marquee-item"><span class="dot dot-gold"></span>EDUKASI GRATIS</div>
+      <div class="marquee-item"><span class="dot"></span>NEWS CALENDAR</div>
+      <div class="marquee-item"><span class="dot dot-gold"></span>LIVE CHART</div>
+      <div class="marquee-item"><span class="dot"></span>LIPUTAN TOP1PERCENT</div>
+      <div class="marquee-item"><span class="dot dot-gold"></span>KOMUNITAS DISCORD</div>
+    </div>
+  </div>
+ 
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="products-header">
+      <div>
+        <div class="section-label">Semua Fitur</div>
+        <h2 class="section-title">PLATFORM<br><span class="g">TERLENGKAP</span><br><span class="gold">INDONESIA</span></h2>
+      </div>
+      <div class="products-count">11</div>
+    </div>
+    <div class="products-grid">
+ 
+      <a href="broker.html" class="pcard pcard-featured">
+        <div class="pcard-num">01 / 11</div>
+        <span class="pcard-icon">🏦</span>
+        <div class="pcard-title">BROKER REVIEW</div>
+        <div class="pcard-desc">Review jujur 14 broker forex terpercaya dengan rating komunitas real & link affiliate terverifikasi.</div>
+        <div class="pcard-preview">
+          <div class="preview-row"><span class="prev-sym">VT Markets</span><span class="prev-up">★ 4.8</span></div>
+          <div class="preview-row"><span class="prev-sym">Exness</span><span class="prev-up">★ 4.5</span></div>
+          <div class="preview-row"><span class="prev-sym">Axi</span><span class="prev-up">★ 4.6</span></div>
+          <div class="preview-row"><span class="prev-sym">HFM</span><span class="prev-up">★ 4.4</span></div>
+        </div>
+        <div class="pcard-tag tag-green">14 Broker</div>
+        <div class="pcard-arrow">↗</div>
+      </a>
+ 
+      <a href="exchange.html" class="pcard pcard-md">
+        <div class="pcard-num">02 / 11</div>
+        <span class="pcard-icon" style="color:var(--gold)">💱</span>
+        <div class="pcard-title">EXCHANGE REVIEW</div>
+        <div class="pcard-desc">Binance, Bybit, OKX, Indodax — review lengkap dengan rating komunitas real.</div>
+        <div class="pcard-tag tag-gold">6 Exchange</div>
+        <div class="pcard-arrow">↗</div>
+      </a>
+ 
+      <a href="propfirm.html" class="pcard pcard-sm">
+        <div class="pcard-num">03 / 11</div>
+        <span class="pcard-icon">🏆</span>
+        <div class="pcard-title">PROP FIRM</div>
+        <div class="pcard-desc">FTMO, The5ers, dan prop firm terbaik untuk trader Indonesia.</div>
+        <div class="pcard-tag tag-green">5 PropFirm</div>
+        <div class="pcard-arrow">↗</div>
+      </a>
+ 
+      <a href="news.html" class="pcard pcard-7">
+        <div class="pcard-num">04 / 11</div>
+        <span class="pcard-icon">📰</span>
+        <div class="pcard-title">TRADING NEWS</div>
+        <div class="pcard-desc">Berita pasar terkini — Forex, Crypto, Saham, Komoditi. Update setiap hari dari sumber terpercaya global.</div>
+        <div class="pcard-tag tag-gold">Live Update</div>
+        <div class="pcard-arrow">↗</div>
+      </a>
+ 
+      <a href="kalender.html" class="pcard pcard-5">
+        <div class="pcard-num">05 / 11</div>
+        <span class="pcard-icon" style="color:var(--gold)">📅</span>
+        <div class="pcard-title">NEWS CALENDAR</div>
+        <div class="pcard-desc">Economic calendar — jadwal rilis data ekonomi penting dunia secara real time.</div>
+        <div class="pcard-tag tag-gold">Real Time</div>
+        <div class="pcard-arrow">↗</div>
+      </a>
+ 
+      <a href="kalkulator.html" class="pcard pcard-sm">
+        <div class="pcard-num">06 / 11</div>
+        <span class="pcard-icon">🧮</span>
+        <div class="pcard-title">KALKULATOR TRADING</div>
+        <div class="pcard-desc">Lot size, risk/reward, pip value, margin — semua dalam satu halaman.</div>
+        <div class="pcard-tag tag-green">5 Tools</div>
+        <div class="pcard-arrow">↗</div>
+      </a>
+ 
+      <a href="chart.html" class="pcard pcard-md">
+        <div class="pcard-num">07 / 11</div>
+        <span class="pcard-icon" style="color:var(--gold)">📊</span>
+        <div class="pcard-title">LIVE CHART</div>
+        <div class="pcard-desc">TradingView embedded — analisa langsung tanpa buka aplikasi lain.</div>
+        <div class="pcard-tag tag-gold">TradingView</div>
+        <div class="pcard-arrow">↗</div>
+      </a>
+ 
+      <a href="edukasi.html" class="pcard pcard-lg">
+        <div class="pcard-num">08 / 11</div>
+        <span class="pcard-icon">🎓</span>
+        <div class="pcard-title">EDUKASI TRADING</div>
+        <div class="pcard-desc">Artikel dan panduan trading dari trader berpengalaman 7+ tahun. Dari pemula sampai pro.</div>
+        <div class="pcard-tag tag-green">Free Access</div>
+        <div class="pcard-arrow">↗</div>
+      </a>
+ 
+      <a href="liputan.html" class="pcard pcard-lg">
+        <div class="pcard-num">09 / 11</div>
+        <span class="pcard-icon" style="color:var(--gold)">🎬</span>
+        <div class="pcard-title">LIPUTAN TOP1PERCENT</div>
+        <div class="pcard-desc">Berita seputar trading — kisah trader rugi, bangkrut, comeback, dan semua yang terjadi di dunia trading Indonesia.</div>
+        <div class="pcard-tag tag-gold">Berita Trading</div>
+        <div class="pcard-arrow">↗</div>
+      </a>
+ 
+      <a href="https://discord.gg/Tc5GqnVwdm" target="_blank" class="pcard pcard-md">
+        <div class="pcard-num">10 / 11</div>
+        <span class="pcard-icon">💬</span>
+        <div class="pcard-title">KOMUNITAS DISCORD</div>
+        <div class="pcard-desc">Bergabung dengan trader Indonesia aktif. Diskusi, analisa, dan event spesial komunitas.</div>
+        <div class="pcard-tag tag-green">Free Join</div>
+        <div class="pcard-arrow">↗</div>
+      </a>
+ 
+      <a href="#" class="pcard pcard-sm" style="opacity:0.4;pointer-events:none">
+        <div class="pcard-num">11 / 11</div>
+        <span class="pcard-icon">🤖</span>
+        <div class="pcard-title">AI ASSISTANT</div>
+        <div class="pcard-desc">Chat dengan AI trading assistant 24/7.</div>
+        <div class="pcard-tag tag-red">Segera Hadir</div>
+      </a>
+ 
+    </div>
+  </section>
+ 
+  <div class="divider"></div>
+ 
+  <!-- WHY -->
+  <div class="why" style="position:relative;z-index:2">
+    <div>
+      <div class="section-label">Mengapa Top1Percent</div>
+      <h2 class="section-title">DIBUAT OLEH<br>TRADER<br><span class="gold">UNTUK TRADER</span></h2>
+      <p class="why-text">Bukan media besar, bukan perusahaan besar. Top1Percent dibangun oleh trader aktif dengan pengalaman 7+ tahun di Forex, Crypto, Saham, dan Komoditi.</p>
+      <p class="why-text" style="margin-top:1rem">Semua review jujur berdasarkan pengalaman nyata. Semua edukasi dari praktisi langsung. Platform edukasi trading terbaik untuk trader Indonesia.</p>
+      <div class="why-quote">
+        <p>"99% trader gagal bukan karena tidak pintar, tapi karena tidak punya akses ke informasi yang benar."</p>
+        <cite>— Fajar Shiddiq, Founder Top1Percent</cite>
+      </div>
+    </div>
+    <div class="why-right">
+      <div class="why-card"><div class="why-card-num">7+</div><div class="why-card-label">Tahun Trading Aktif</div></div>
+      <div class="why-card"><div class="why-card-num gold">4</div><div class="why-card-label">Instrumen Market</div></div>
+      <div class="why-card"><div class="why-card-num">14</div><div class="why-card-label">Broker Direview</div></div>
+      <div class="why-card"><div class="why-card-num gold">100%</div><div class="why-card-label">100% Gratis</div></div>
+    </div>
+  </div>
+ 
+  <div class="divider"></div>
+ 
+  <!-- DISCORD CTA -->
+  <div class="discord-cta" style="position:relative;z-index:2">
+    <div style="flex:1;min-width:260px">
+      <div class="section-label">Komunitas</div>
+      <div class="dc-title">GABUNG DISCORD<br><span class="g">TOP1PERCENT</span></div>
+      <p class="dc-sub">Diskusi trading, analisa bareng, giveaway rutin <strong style="color:var(--gold)">100 USDT THR</strong>, dan konten eksklusif. 100% Gratis.</p>
+    </div>
+    <div class="dc-right">
+      <div><div class="dc-stat-num">🔥</div><div class="dc-stat-label">Aktif</div></div>
+      <div><div class="dc-stat-num" style="color:var(--gold)">Free</div><div class="dc-stat-label">Idul Fitri 2026</div></div>
+      <a href="https://discord.gg/Tc5GqnVwdm" target="_blank" class="btn-primary" style="white-space:nowrap"><span>Join Sekarang →</span></a>
+    </div>
+  </div>
+ 
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><span class="ng">TOP</span>1<span class="ng">PERCENT</span></div>
+        <div class="footer-tagline">Don't Trade Like 99</div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <div class="footer-col-title">Review</div>
+          <a href="broker.html">Broker Review</a>
+          <a href="exchange.html">Exchange Review</a>
+          <a href="propfirm.html">PropFirm Review</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Tools</div>
+          <a href="kalkulator.html">Kalkulator</a>
+          <a href="chart.html">Live Chart</a>
+          <a href="kalender.html">News Calendar</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Konten</div>
+          <a href="news.html">Trading News</a>
+          <a href="edukasi.html">Edukasi</a>
+          <a href="liputan.html">Liputan</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Komunitas</div>
+          <a href="https://discord.gg/Tc5GqnVwdm" target="_blank">Discord</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 <span>Top1Percent</span> · top1percent.my.id</div>
+      <div class="footer-disclaimer">Trading mengandung risiko tinggi. Konten di website ini bersifat edukatif, bukan saran investasi. Selalu lakukan riset mandiri sebelum trading.</div>
+    </div>
+  </footer>
+ 
+  <script>
+    // Mobile menu
+    function toggleMenu(){
+      const m=document.getElementById('navMobile');
+      const b=document.getElementById('hamBtn');
+      m.classList.toggle('open');
+      b.textContent=m.classList.contains('open')?'✕':'☰';
+    }
+    // Close on outside click
+    document.addEventListener('click',e=>{
+      const m=document.getElementById('navMobile');
+      const b=document.getElementById('hamBtn');
+      if(!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');b.textContent='☰';}
+    });
+    // Navbar scroll
+    window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);});
+    // Fade in on scroll
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.08});
+    document.querySelectorAll('.pcard,.why-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.5s ease, transform 0.5s ease';obs.observe(el);});
+  </script>
+</body>
+</html>
