@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Broker Review — Top1Percent</title>
+  <meta name="description" content="Review jujur 14 broker forex terpercaya. Rating dari WikiFX, link affiliate terverifikasi. Top1Percent.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700;800;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --g:#39FF14;--gold:#FFD700;--gold2:#FFA500;
+      --k:#050505;--k2:#0a0a0a;--k3:#111111;--k4:#161616;--k5:#1e1e1e;
+      --t:#F0EDE8;--tm:#888;--td:#444;
+      --border:rgba(57,255,20,0.1);--border-gold:rgba(255,215,0,0.12);
+      --glow:0 0 30px rgba(57,255,20,0.3);--glow-gold:0 0 30px rgba(255,215,0,0.3);
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--k);color:var(--t);font-family:'Barlow',sans-serif;overflow-x:hidden;}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:rgba(5,5,5,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--t);text-decoration:none;display:flex;align-items:center;gap:0.2rem;}
+    .nav-logo .ng{color:var(--g);}
+    .nav-logo .logo-tag{font-family:'Barlow Condensed',sans-serif;font-size:0.55rem;font-weight:700;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;border:1px solid rgba(255,215,0,0.4);padding:0.1rem 0.35rem;margin-left:0.4rem;}
+    .nav-links{display:flex;align-items:center;gap:0.1rem;list-style:none;}
+    .nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--tm);text-decoration:none;padding:0.45rem 0.6rem;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--t);}
+    .nav-links a.active{color:var(--g);}
+    .nav-cta{color:var(--k)!important;background:var(--g);padding:0.45rem 1rem!important;font-weight:800!important;}
+    .nav-cta:hover{box-shadow:var(--glow);}
+    .nav-ham{display:none;background:none;border:1px solid var(--border);color:var(--t);padding:0.4rem 0.6rem;cursor:pointer;font-size:1rem;}
+    .nav-mobile{display:none;position:fixed;top:56px;left:0;right:0;background:rgba(5,5,5,0.98);border-bottom:1px solid var(--border);padding:1rem;z-index:99;flex-direction:column;gap:0.3rem;}
+    .nav-mobile.open{display:flex;}
+    .nav-mobile a{font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--tm);text-decoration:none;padding:0.7rem 1rem;border-bottom:1px solid var(--border);}
+    .nav-mobile a:last-child{color:var(--k);background:var(--g);text-align:center;margin-top:0.5rem;}
+
+    /* PAGE HERO */
+    .page-hero{padding:7rem 2rem 3rem;background:var(--k2);border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+    .page-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(57,255,20,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(57,255,20,0.03) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse 100% 100% at 50% 0%,black,transparent);}
+    .page-hero-inner{max-width:1400px;margin:0 auto;position:relative;z-index:2;}
+    .breadcrumb{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--td);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
+    .breadcrumb a{color:var(--td);text-decoration:none;transition:color 0.2s;}
+    .breadcrumb a:hover{color:var(--g);}
+    .breadcrumb span{color:var(--g);}
+    .page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,7rem);line-height:0.9;letter-spacing:0.02em;}
+    .page-title .g{color:var(--g);}
+    .page-title .gold{color:var(--gold);}
+    .page-sub{font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:300;letter-spacing:0.1em;color:var(--tm);margin-top:1rem;max-width:600px;}
+    .page-sub strong{color:var(--t);}
+    .page-stats{display:flex;flex-wrap:wrap;gap:2rem;margin-top:2rem;}
+    .pstat{text-align:center;}
+    .pstat-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--g);line-height:1;}
+    .pstat-num.gold{color:var(--gold);}
+    .pstat-label{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--tm);}
+
+    /* WIKIFX NOTICE */
+    .wikifx-notice{background:rgba(255,215,0,0.05);border:1px solid var(--border-gold);padding:1rem 1.5rem;display:flex;align-items:center;gap:1rem;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;color:var(--tm);max-width:1400px;margin:2rem auto 0;}
+    .wikifx-notice strong{color:var(--gold);}
+    .wikifx-notice a{color:var(--gold);text-decoration:none;}
+    .wikifx-notice a:hover{text-decoration:underline;}
+
+    /* FILTER BAR */
+    .filter-bar{max-width:1400px;margin:0 auto;padding:2rem 1.5rem 0;}
+    .filter-inner{display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;}
+    .filter-label{font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;font-weight:800;letter-spacing:0.25em;text-transform:uppercase;color:var(--td);margin-right:0.5rem;}
+    .filter-btn{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:var(--k3);border:1px solid var(--border);color:var(--tm);padding:0.4rem 1rem;cursor:pointer;transition:all 0.2s;}
+    .filter-btn:hover,.filter-btn.active{background:rgba(57,255,20,0.08);border-color:var(--g);color:var(--g);}
+
+    /* BROKER GRID */
+    .broker-grid{max-width:1400px;margin:0 auto;padding:2rem 1.5rem 5rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1px;background:var(--border);}
+
+    /* BROKER CARD */
+    .bcard{background:var(--k2);padding:0;position:relative;transition:background 0.3s;display:flex;flex-direction:column;}
+    .bcard:hover{background:var(--k3);}
+    .bcard-head{padding:1.8rem 1.8rem 0;}
+    .bcard-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;}
+    .bcard-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.03em;color:var(--t);line-height:1;}
+    .bcard-badges{display:flex;flex-direction:column;align-items:flex-end;gap:0.3rem;}
+    .badge{font-family:'Barlow Condensed',sans-serif;font-size:0.58rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;padding:0.2rem 0.55rem;}
+    .badge-reg{background:rgba(57,255,20,0.08);color:var(--g);border:1px solid rgba(57,255,20,0.2);}
+    .badge-id{background:rgba(255,215,0,0.08);color:var(--gold);border:1px solid rgba(255,215,0,0.2);}
+    .badge-crypto{background:rgba(255,165,0,0.08);color:var(--gold2);border:1px solid rgba(255,165,0,0.2);}
+
+    /* WIKIFX RATING */
+    .wikifx-rating{background:var(--k4);border:1px solid var(--border-gold);padding:0.8rem 1rem;margin:0 1.8rem;display:flex;align-items:center;justify-content:space-between;}
+    .wfx-left{display:flex;align-items:center;gap:0.8rem;}
+    .wfx-score{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--gold);line-height:1;}
+    .wfx-score.high{color:var(--g);}
+    .wfx-score.mid{color:var(--gold);}
+    .wfx-score.low{color:#ff5555;}
+    .wfx-label{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:var(--td);}
+    .wfx-source{font-family:'Barlow Condensed',sans-serif;font-size:0.6rem;color:var(--td);letter-spacing:0.1em;}
+    .wfx-source a{color:var(--gold);text-decoration:none;}
+    .wfx-stars{display:flex;gap:0.15rem;}
+    .wfx-star{color:var(--gold);font-size:0.9rem;}
+    .wfx-star.empty{color:var(--td);}
+
+    /* BROKER INFO */
+    .bcard-info{padding:1rem 1.8rem;display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;}
+    .binfo-item{}
+    .binfo-label{font-family:'Barlow Condensed',sans-serif;font-size:0.58rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--td);}
+    .binfo-val{font-family:'Barlow Condensed',sans-serif;font-size:0.88rem;font-weight:700;color:var(--t);margin-top:0.1rem;}
+
+    /* TAGS */
+    .bcard-tags{padding:0 1.8rem 1rem;display:flex;flex-wrap:wrap;gap:0.4rem;}
+    .btag{font-family:'Barlow Condensed',sans-serif;font-size:0.58rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:var(--k4);border:1px solid var(--border);color:var(--tm);padding:0.2rem 0.55rem;}
+
+    /* CTA */
+    .bcard-cta{margin:0 1.8rem 1.8rem;display:block;text-align:center;background:var(--g);color:var(--k);font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;padding:0.8rem;text-decoration:none;transition:all 0.3s;position:relative;overflow:hidden;}
+    .bcard-cta::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateX(-100%);transition:transform 0.3s;}
+    .bcard-cta:hover::before{transform:translateX(0);}
+    .bcard-cta span{position:relative;z-index:1;}
+    .bcard-cta:hover{box-shadow:var(--glow-gold);}
+
+    /* DISCLAIMER */
+    .disclaimer{max-width:1400px;margin:0 auto;padding:0 1.5rem 3rem;}
+    .disclaimer-box{background:var(--k2);border:1px solid var(--border);padding:1.5rem;font-size:0.72rem;color:var(--td);line-height:1.7;}
+    .disclaimer-box strong{color:var(--tm);}
+
+    /* FOOTER */
+    footer{padding:3rem 1.5rem;background:var(--k);border-top:1px solid var(--border);}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--t);}
+    .footer-logo .ng{color:var(--g);}
+    .footer-copy{font-size:0.7rem;color:var(--td);}
+    .footer-nav{display:flex;gap:1.5rem;flex-wrap:wrap;}
+    .footer-nav a{font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--td);text-decoration:none;transition:color 0.2s;}
+    .footer-nav a:hover{color:var(--g);}
+
+    /* MOBILE */
+    @media(max-width:768px){
+      nav{padding:0.8rem 1rem;}
+      .nav-links{display:none;}
+      .nav-ham{display:block;}
+      .page-hero{padding:5.5rem 1rem 2rem;}
+      .broker-grid{grid-template-columns:1fr;padding:1.5rem 1rem 3rem;}
+      .filter-bar{padding:1.5rem 1rem 0;}
+      .wikifx-notice{margin:1.5rem 1rem 0;font-size:0.72rem;}
+      .footer-bottom{flex-direction:column;text-align:center;}
+      .footer-nav{justify-content:center;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo"><span class="ng">TOP</span>1<span class="ng">PERCENT</span><span class="logo-tag">Pro</span></a>
+    <ul class="nav-links">
+      <li><a href="broker.html" class="active">Broker</a></li>
+      <li><a href="exchange.html">Exchange</a></li>
+      <li><a href="propfirm.html">PropFirm</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="kalkulator.html">Kalkulator</a></li>
+      <li><a href="edukasi.html">Edukasi</a></li>
+      <li><a href="liputan.html">Liputan</a></li>
+      <li><a href="https://discord.gg/Tc5GqnVwdm" target="_blank" class="nav-cta">Discord →</a></li>
+    </ul>
+    <button class="nav-ham" onclick="toggleMenu()" id="hamBtn">☰</button>
+  </nav>
+  <div class="nav-mobile" id="navMobile">
+    <a href="index.html">Home</a>
+    <a href="broker.html">Broker Review</a>
+    <a href="exchange.html">Exchange Review</a>
+    <a href="propfirm.html">PropFirm</a>
+    <a href="news.html">Trading News</a>
+    <a href="kalkulator.html">Kalkulator</a>
+    <a href="edukasi.html">Edukasi</a>
+    <a href="liputan.html">Liputan</a>
+    <a href="https://discord.gg/Tc5GqnVwdm" target="_blank">Join Discord →</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-grid"></div>
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><a href="index.html">Home</a> › <span>Broker Review</span></div>
+      <h1 class="page-title">BROKER<br><span class="g">REVIEW</span></h1>
+      <p class="page-sub">Review jujur <strong>14 broker forex</strong> terpercaya. Rating langsung dari <strong>WikiFX</strong> — platform verifikasi broker global.</p>
+      <div class="page-stats">
+        <div class="pstat"><div class="pstat-num">14</div><div class="pstat-label">Broker Direview</div></div>
+        <div class="pstat"><div class="pstat-num gold">WikiFX</div><div class="pstat-label">Sumber Rating</div></div>
+        <div class="pstat"><div class="pstat-num">100%</div><div class="pstat-label">Review Jujur</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WIKIFX NOTICE -->
+  <div class="wikifx-notice">
+    <span>⚠️</span>
+    <div>Rating broker di halaman ini bersumber dari <strong>WikiFX</strong> — platform verifikasi broker forex global terpercaya. Cek langsung di <a href="https://www.wikifx.com" target="_blank">wikifx.com</a> untuk info terbaru. Skor dapat berubah sewaktu-waktu.</div>
+  </div>
+
+  <!-- FILTER -->
+  <div class="filter-bar">
+    <div class="filter-inner">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-btn active" onclick="filterBroker('all',this)">Semua</button>
+      <button class="filter-btn" onclick="filterBroker('regulated',this)">Regulated</button>
+      <button class="filter-btn" onclick="filterBroker('lokal',this)">Lokal ID</button>
+      <button class="filter-btn" onclick="filterBroker('crypto',this)">Crypto+Forex</button>
+      <button class="filter-btn" onclick="filterBroker('lowdeposit',this)">Min Deposit $1</button>
+    </div>
+  </div>
+
+  <!-- BROKER GRID -->
+  <div class="broker-grid" id="brokerGrid">
+
+    <!-- VT MARKETS -->
+    <div class="bcard" data-cat="regulated">
+      <div class="bcard-head">
+        <div class="bcard-top">
+          <div class="bcard-name">VT Markets</div>
+          <div class="bcard-badges"><span class="badge badge-reg">Regulated</span></div>
+        </div>
+      </div>
+      <div class="wikifx-rating">
+        <div class="wfx-left">
+          <div>
+            <div class="wfx-score high">7.89</div>
+            <div class="wfx-label">WikiFX Score</div>
+          </div>
+          <div class="wfx-stars">
+            <span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star empty">★</span>
+          </div>
+        </div>
+        <div class="wfx-source">Sumber: <a href="https://www.wikifx.com" target="_blank">WikiFX</a></div>
+      </div>
+      <div class="bcard-info">
+        <div class="binfo-item"><div class="binfo-label">Min Deposit</div><div class="binfo-val">$1</div></div>
+        <div class="binfo-item"><div class="binfo-label">Spread</div><div class="binfo-val">0.0 pips</div></div>
+        <div class="binfo-item"><div class="binfo-label">Leverage</div><div class="binfo-val">1:500</div></div>
+        <div class="binfo-item"><div class="binfo-label">Regulasi</div><div class="binfo-val">ASIC, FSCA</div></div>
+        <div class="binfo-item"><div class="binfo-label">Platform</div><div class="binfo-val">MT4/MT5</div></div>
+        <div class="binfo-item"><div class="binfo-label">Didirikan</div><div class="binfo-val">2015</div></div>
+      </div>
+      <div class="bcard-tags"><span class="btag">ECN</span><span class="btag">MT4/MT5</span><span class="btag">Low Spread</span><span class="btag">ASIC</span></div>
+      <a href="https://www.vtmarkets.com/trade-now/?affid=7255014" target="_blank" rel="noopener" class="bcard-cta"><span>Buka Akun VT Markets →</span></a>
+    </div>
+
+    <!-- EXNESS -->
+    <div class="bcard" data-cat="regulated lowdeposit">
+      <div class="bcard-head">
+        <div class="bcard-top">
+          <div class="bcard-name">Exness</div>
+          <div class="bcard-badges"><span class="badge badge-reg">Regulated</span></div>
+        </div>
+      </div>
+      <div class="wikifx-rating">
+        <div class="wfx-left">
+          <div>
+            <div class="wfx-score high">8.25</div>
+            <div class="wfx-label">WikiFX Score</div>
+          </div>
+          <div class="wfx-stars">
+            <span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span>
+          </div>
+        </div>
+        <div class="wfx-source">Sumber: <a href="https://www.wikifx.com" target="_blank">WikiFX</a></div>
+      </div>
+      <div class="bcard-info">
+        <div class="binfo-item"><div class="binfo-label">Min Deposit</div><div class="binfo-val">$1</div></div>
+        <div class="binfo-item"><div class="binfo-label">Spread</div><div class="binfo-val">0.3 pips</div></div>
+        <div class="binfo-item"><div class="binfo-label">Leverage</div><div class="binfo-val">1:2000</div></div>
+        <div class="binfo-item"><div class="binfo-label">Regulasi</div><div class="binfo-val">FCA, CySEC</div></div>
+        <div class="binfo-item"><div class="binfo-label">Platform</div><div class="binfo-val">MT4/MT5</div></div>
+        <div class="binfo-item"><div class="binfo-label">Didirikan</div><div class="binfo-val">2008</div></div>
+      </div>
+      <div class="bcard-tags"><span class="btag">Populer ID</span><span class="btag">Instant WD</span><span class="btag">FCA</span></div>
+      <a href="https://one.exnessonelink.com/a/6c4w61jmoh" target="_blank" rel="noopener" class="bcard-cta"><span>Buka Akun Exness →</span></a>
+    </div>
+
+    <!-- AXI -->
+    <div class="bcard" data-cat="regulated lowdeposit">
+      <div class="bcard-head">
+        <div class="bcard-top">
+          <div class="bcard-name">Axi</div>
+          <div class="bcard-badges"><span class="badge badge-reg">Regulated</span></div>
+        </div>
+      </div>
+      <div class="wikifx-rating">
+        <div class="wfx-left">
+          <div>
+            <div class="wfx-score high">7.65</div>
+            <div class="wfx-label">WikiFX Score</div>
+          </div>
+          <div class="wfx-stars">
+            <span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star empty">★</span>
+          </div>
+        </div>
+        <div class="wfx-source">Sumber: <a href="https://www.wikifx.com" target="_blank">WikiFX</a></div>
+      </div>
+      <div class="bcard-info">
+        <div class="binfo-item"><div class="binfo-label">Min Deposit</div><div class="binfo-val">$0</div></div>
+        <div class="binfo-item"><div class="binfo-label">Spread</div><div class="binfo-val">0.0 pips</div></div>
+        <div class="binfo-item"><div class="binfo-label">Leverage</div><div class="binfo-val">1:500</div></div>
+        <div class="binfo-item"><div class="binfo-label">Regulasi</div><div class="binfo-val">FCA, ASIC</div></div>
+        <div class="binfo-item"><div class="binfo-label">Platform</div><div class="binfo-val">MT4</div></div>
+        <div class="binfo-item"><div class="binfo-label">Didirikan</div><div class="binfo-val">2007</div></div>
+      </div>
+      <div class="bcard-tags"><span class="btag">ECN</span><span class="btag">No Min Deposit</span><span class="btag">ASIC</span></div>
+      <a href="https://records.axiaffiliates.com/visit/?bta=42235&brand=axitrader" target="_blank" rel="noopener" class="bcard-cta"><span>Buka Akun Axi →</span></a>
+    </div>
+
+    <!-- VANTAGE -->
+    <div class="bcard" data-cat="regulated">
+      <div class="bcard-head">
+        <div class="bcard-top">
+          <div class="bcard-name">Vantage Markets</div>
+          <div class="bcard-badges"><span class="badge badge-reg">Regulated</span></div>
+        </div>
+      </div>
+      <div class="wikifx-rating">
+        <div class="wfx-left">
+          <div>
+            <div class="wfx-score high">7.92</div>
+            <div class="wfx-label">WikiFX Score</div>
+          </div>
+          <div class="wfx-stars">
+            <span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star empty">★</span>
+          </div>
+        </div>
+        <div class="wfx-source">Sumber: <a href="https://www.wikifx.com" target="_blank">WikiFX</a></div>
+      </div>
+      <div class="bcard-info">
+        <div class="binfo-item"><div class="binfo-label">Min Deposit</div><div class="binfo-val">$50</div></div>
+        <div class="binfo-item"><div class="binfo-label">Spread</div><div class="binfo-val">0.0 pips</div></div>
+        <div class="binfo-item"><div class="binfo-label">Leverage</div><div class="binfo-val">1:500</div></div>
+        <div class="binfo-item"><div class="binfo-label">Regulasi</div><div class="binfo-val">ASIC, FCA</div></div>
+        <div class="binfo-item"><div class="binfo-label">Platform</div><div class="binfo-val">MT4/MT5</div></div>
+        <div class="binfo-item"><div class="binfo-label">Didirikan</div><div class="binfo-val">2009</div></div>
+      </div>
+      <div class="bcard-tags"><span class="btag">ECN</span><span class="btag">Cepat</span><span class="btag">ASIC</span></div>
+      <a href="https://www.vantagemarkets.com/forex-trading/forex-trading-account/?utm_source=promo&utm_medium=social&utm_campaign=RAF&utm_term=NA&utm_content=NA&c=HVuvZP4QIGxExPd2+jRc2w==" target="_blank" rel="noopener" class="bcard-cta"><span>Buka Akun Vantage →</span></a>
+    </div>
+
+    <!-- HEADWAY -->
+    <div class="bcard" data-cat="regulated lowdeposit">
+      <div class="bcard-head">
+        <div class="bcard-top">
+          <div class="bcard-name">Headway</div>
+          <div class="bcard-badges"><span class="badge badge-reg">Regulated</span></div>
+        </div>
+      </div>
+      <div class="wikifx-rating">
+        <div class="wfx-left">
+          <div>
+            <div class="wfx-score mid">6.80</div>
+            <div class="wfx-label">WikiFX Score</div>
+          </div>
+          <div class="wfx-stars">
+            <span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star empty">★</span><span class="wfx-star empty">★</span>
+          </div>
+        </div>
+        <div class="wfx-source">Sumber: <a href="https://www.wikifx.com" target="_blank">WikiFX</a></div>
+      </div>
+      <div class="bcard-info">
+        <div class="binfo-item"><div class="binfo-label">Min Deposit</div><div class="binfo-val">$1</div></div>
+        <div class="binfo-item"><div class="binfo-label">Spread</div><div class="binfo-val">0.1 pips</div></div>
+        <div class="binfo-item"><div class="binfo-label">Leverage</div><div class="binfo-val">1:1000</div></div>
+        <div class="binfo-item"><div class="binfo-label">Regulasi</div><div class="binfo-val">IFSC</div></div>
+        <div class="binfo-item"><div class="binfo-label">Platform</div><div class="binfo-val">MT4</div></div>
+        <div class="binfo-item"><div class="binfo-label">Didirikan</div><div class="binfo-val">2015</div></div>
+      </div>
+      <div class="bcard-tags"><span class="btag">Pemula</span><span class="btag">Bonus</span><span class="btag">Copy Trade</span></div>
+      <a href="https://headway.partners/user/signup?hwp=01ed11" target="_blank" rel="noopener" class="bcard-cta"><span>Buka Akun Headway →</span></a>
+    </div>
+
+    <!-- XM GLOBAL -->
+    <div class="bcard" data-cat="regulated lowdeposit">
+      <div class="bcard-head">
+        <div class="bcard-top">
+          <div class="bcard-name">XM Global</div>
+          <div class="bcard-badges"><span class="badge badge-reg">Regulated</span></div>
+        </div>
+      </div>
+      <div class="wikifx-rating">
+        <div class="wfx-left">
+          <div>
+            <div class="wfx-score high">7.50</div>
+            <div class="wfx-label">WikiFX Score</div>
+          </div>
+          <div class="wfx-stars">
+            <span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star empty">★</span>
+          </div>
+        </div>
+        <div class="wfx-source">Sumber: <a href="https://www.wikifx.com" target="_blank">WikiFX</a></div>
+      </div>
+      <div class="bcard-info">
+        <div class="binfo-item"><div class="binfo-label">Min Deposit</div><div class="binfo-val">$5</div></div>
+        <div class="binfo-item"><div class="binfo-label">Spread</div><div class="binfo-val">1.6 pips</div></div>
+        <div class="binfo-item"><div class="binfo-label">Leverage</div><div class="binfo-val">1:888</div></div>
+        <div class="binfo-item"><div class="binfo-label">Regulasi</div><div class="binfo-val">CySEC, ASIC</div></div>
+        <div class="binfo-item"><div class="binfo-label">Platform</div><div class="binfo-val">MT4/MT5</div></div>
+        <div class="binfo-item"><div class="binfo-label">Didirikan</div><div class="binfo-val">2009</div></div>
+      </div>
+      <div class="bcard-tags"><span class="btag">Bonus</span><span class="btag">Cocok Pemula</span><span class="btag">CySEC</span></div>
+      <a href="https://affs.click/aVdrt" target="_blank" rel="noopener" class="bcard-cta"><span>Buka Akun XM →</span></a>
+    </div>
+
+    <!-- INSTAFOREX -->
+    <div class="bcard" data-cat="regulated lowdeposit">
+      <div class="bcard-head">
+        <div class="bcard-top">
+          <div class="bcard-name">InstaForex</div>
+          <div class="bcard-badges"><span class="badge badge-reg">Regulated</span></div>
+        </div>
+      </div>
+      <div class="wikifx-rating">
+        <div class="wfx-left">
+          <div>
+            <div class="wfx-score mid">6.95</div>
+            <div class="wfx-label">WikiFX Score</div>
+          </div>
+          <div class="wfx-stars">
+            <span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star empty">★</span>
+          </div>
+        </div>
+        <div class="wfx-source">Sumber: <a href="https://www.wikifx.com" target="_blank">WikiFX</a></div>
+      </div>
+      <div class="bcard-info">
+        <div class="binfo-item"><div class="binfo-label">Min Deposit</div><div class="binfo-val">$1</div></div>
+        <div class="binfo-item"><div class="binfo-label">Spread</div><div class="binfo-val">0.7 pips</div></div>
+        <div class="binfo-item"><div class="binfo-label">Leverage</div><div class="binfo-val">1:1000</div></div>
+        <div class="binfo-item"><div class="binfo-label">Regulasi</div><div class="binfo-val">CySEC</div></div>
+        <div class="binfo-item"><div class="binfo-label">Platform</div><div class="binfo-val">MT4</div></div>
+        <div class="binfo-item"><div class="binfo-label">Didirikan</div><div class="binfo-val">2007</div></div>
+      </div>
+      <div class="bcard-tags"><span class="btag">Bonus Besar</span><span class="btag">Kontes</span><span class="btag">MT4</span></div>
+      <a href="https://www.instaforex.com/id/?x=UGSNN" target="_blank" rel="noopener" class="bcard-cta"><span>Buka Akun InstaForex →</span></a>
+    </div>
+
+    <!-- JUST MARKETS -->
+    <div class="bcard" data-cat="regulated lowdeposit">
+      <div class="bcard-head">
+        <div class="bcard-top">
+          <div class="bcard-name">Just Markets</div>
+          <div class="bcard-badges"><span class="badge badge-reg">Regulated</span></div>
+        </div>
+      </div>
+      <div class="wikifx-rating">
+        <div class="wfx-left">
+          <div>
+            <div class="wfx-score mid">7.10</div>
+            <div class="wfx-label">WikiFX Score</div>
+          </div>
+          <div class="wfx-stars">
+            <span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star empty">★</span>
+          </div>
+        </div>
+        <div class="wfx-source">Sumber: <a href="https://www.wikifx.com" target="_blank">WikiFX</a></div>
+      </div>
+      <div class="bcard-info">
+        <div class="binfo-item"><div class="binfo-label">Min Deposit</div><div class="binfo-val">$1</div></div>
+        <div class="binfo-item"><div class="binfo-label">Spread</div><div class="binfo-val">0.0 pips</div></div>
+        <div class="binfo-item"><div class="binfo-label">Leverage</div><div class="binfo-val">1:3000</div></div>
+        <div class="binfo-item"><div class="binfo-label">Regulasi</div><div class="binfo-val">CySEC, FSA</div></div>
+        <div class="binfo-item"><div class="binfo-label">Platform</div><div class="binfo-val">MT4/MT5</div></div>
+        <div class="binfo-item"><div class="binfo-label">Didirikan</div><div class="binfo-val">2012</div></div>
+      </div>
+      <div class="bcard-tags"><span class="btag">Leverage Tinggi</span><span class="btag">MT4/MT5</span></div>
+      <a href="https://one.justmarkets.link/a/tp2sde0eqr/id/" target="_blank" rel="noopener" class="bcard-cta"><span>Buka Akun Just Markets →</span></a>
+    </div>
+
+    <!-- MRG -->
+    <div class="bcard" data-cat="lokal">
+      <div class="bcard-head">
+        <div class="bcard-top">
+          <div class="bcard-name">MRG Mega Berjangka</div>
+          <div class="bcard-badges"><span class="badge badge-id">Regulasi ID</span></div>
+        </div>
+      </div>
+      <div class="wikifx-rating">
+        <div class="wfx-left">
+          <div>
+            <div class="wfx-score mid">6.50</div>
+            <div class="wfx-label">WikiFX Score</div>
+          </div>
+          <div class="wfx-stars">
+            <span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star empty">★</span><span class="wfx-star empty">★</span>
+          </div>
+        </div>
+        <div class="wfx-source">Sumber: <a href="https://www.wikifx.com" target="_blank">WikiFX</a></div>
+      </div>
+      <div class="bcard-info">
+        <div class="binfo-item"><div class="binfo-label">Min Deposit</div><div class="binfo-val">Rp 5 Juta</div></div>
+        <div class="binfo-item"><div class="binfo-label">Spread</div><div class="binfo-val">Variabel</div></div>
+        <div class="binfo-item"><div class="binfo-label">Leverage</div><div class="binfo-val">1:100</div></div>
+        <div class="binfo-item"><div class="binfo-label">Regulasi</div><div class="binfo-val">Bappebti</div></div>
+        <div class="binfo-item"><div class="binfo-label">Platform</div><div class="binfo-val">Proprietary</div></div>
+        <div class="binfo-item"><div class="binfo-label">Negara</div><div class="binfo-val">Indonesia</div></div>
+      </div>
+      <div class="bcard-tags"><span class="btag">Lokal ID</span><span class="btag">Bappebti</span><span class="btag">Rupiah</span></div>
+      <a href="https://account.mrgfutures.co.id/?tipe=open-account" target="_blank" rel="noopener" class="bcard-cta"><span>Buka Akun MRG →</span></a>
+    </div>
+
+    <!-- AVATRADE -->
+    <div class="bcard" data-cat="regulated">
+      <div class="bcard-head">
+        <div class="bcard-top">
+          <div class="bcard-name">AvaTrade</div>
+          <div class="bcard-badges"><span class="badge badge-reg">Regulated</span></div>
+        </div>
+      </div>
+      <div class="wikifx-rating">
+        <div class="wfx-left">
+          <div>
+            <div class="wfx-score high">7.80</div>
+            <div class="wfx-label">WikiFX Score</div>
+          </div>
+          <div class="wfx-stars">
+            <span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star empty">★</span>
+          </div>
+        </div>
+        <div class="wfx-source">Sumber: <a href="https://www.wikifx.com" target="_blank">WikiFX</a></div>
+      </div>
+      <div class="bcard-info">
+        <div class="binfo-item"><div class="binfo-label">Min Deposit</div><div class="binfo-val">$100</div></div>
+        <div class="binfo-item"><div class="binfo-label">Spread</div><div class="binfo-val">0.9 pips</div></div>
+        <div class="binfo-item"><div class="binfo-label">Leverage</div><div class="binfo-val">1:400</div></div>
+        <div class="binfo-item"><div class="binfo-label">Regulasi</div><div class="binfo-val">CBI, ASIC</div></div>
+        <div class="binfo-item"><div class="binfo-label">Platform</div><div class="binfo-val">MT4/MT5</div></div>
+        <div class="binfo-item"><div class="binfo-label">Didirikan</div><div class="binfo-val">2006</div></div>
+      </div>
+      <div class="bcard-tags"><span class="btag">Multi Regulasi</span><span class="btag">WebTrader</span><span class="btag">CBI</span></div>
+      <a href="https://www.avatrade.id/trading-account/?p=Webtrader&tag=219234" target="_blank" rel="noopener" class="bcard-cta"><span>Buka Akun AvaTrade →</span></a>
+    </div>
+
+    <!-- PRIMEXBT -->
+    <div class="bcard" data-cat="crypto">
+      <div class="bcard-head">
+        <div class="bcard-top">
+          <div class="bcard-name">PrimeXBT</div>
+          <div class="bcard-badges"><span class="badge badge-crypto">Crypto+Forex</span></div>
+        </div>
+      </div>
+      <div class="wikifx-rating">
+        <div class="wfx-left">
+          <div>
+            <div class="wfx-score mid">6.70</div>
+            <div class="wfx-label">WikiFX Score</div>
+          </div>
+          <div class="wfx-stars">
+            <span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star empty">★</span><span class="wfx-star empty">★</span>
+          </div>
+        </div>
+        <div class="wfx-source">Sumber: <a href="https://www.wikifx.com" target="_blank">WikiFX</a></div>
+      </div>
+      <div class="bcard-info">
+        <div class="binfo-item"><div class="binfo-label">Min Deposit</div><div class="binfo-val">$1</div></div>
+        <div class="binfo-item"><div class="binfo-label">Spread</div><div class="binfo-val">Variabel</div></div>
+        <div class="binfo-item"><div class="binfo-label">Leverage</div><div class="binfo-val">1:200</div></div>
+        <div class="binfo-item"><div class="binfo-label">Regulasi</div><div class="binfo-val">Seychelles</div></div>
+        <div class="binfo-item"><div class="binfo-label">Platform</div><div class="binfo-val">Proprietary</div></div>
+        <div class="binfo-item"><div class="binfo-label">Didirikan</div><div class="binfo-val">2018</div></div>
+      </div>
+      <div class="bcard-tags"><span class="btag">Crypto</span><span class="btag">Forex</span><span class="btag">Copy Trade</span></div>
+      <a href="https://go.primexbt.direct/visit/?bta=49419&brand=primexbt" target="_blank" rel="noopener" class="bcard-cta"><span>Buka Akun PrimeXBT →</span></a>
+    </div>
+
+    <!-- HFM -->
+    <div class="bcard" data-cat="regulated lowdeposit">
+      <div class="bcard-head">
+        <div class="bcard-top">
+          <div class="bcard-name">HFM</div>
+          <div class="bcard-badges"><span class="badge badge-reg">Regulated</span></div>
+        </div>
+      </div>
+      <div class="wikifx-rating">
+        <div class="wfx-left">
+          <div>
+            <div class="wfx-score high">7.55</div>
+            <div class="wfx-label">WikiFX Score</div>
+          </div>
+          <div class="wfx-stars">
+            <span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star empty">★</span>
+          </div>
+        </div>
+        <div class="wfx-source">Sumber: <a href="https://www.wikifx.com" target="_blank">WikiFX</a></div>
+      </div>
+      <div class="bcard-info">
+        <div class="binfo-item"><div class="binfo-label">Min Deposit</div><div class="binfo-val">$0</div></div>
+        <div class="binfo-item"><div class="binfo-label">Spread</div><div class="binfo-val">0.0 pips</div></div>
+        <div class="binfo-item"><div class="binfo-label">Leverage</div><div class="binfo-val">1:2000</div></div>
+        <div class="binfo-item"><div class="binfo-label">Regulasi</div><div class="binfo-val">FCA, CySEC</div></div>
+        <div class="binfo-item"><div class="binfo-label">Platform</div><div class="binfo-val">MT4/MT5</div></div>
+        <div class="binfo-item"><div class="binfo-label">Didirikan</div><div class="binfo-val">2010</div></div>
+      </div>
+      <div class="bcard-tags"><span class="btag">No Min Deposit</span><span class="btag">Bonus</span><span class="btag">FCA</span></div>
+      <a href="https://hfmtrade-ind.com/?refid=30429830" target="_blank" rel="noopener" class="bcard-cta"><span>Buka Akun HFM →</span></a>
+    </div>
+
+    <!-- MARKETS4YOU -->
+    <div class="bcard" data-cat="regulated lowdeposit">
+      <div class="bcard-head">
+        <div class="bcard-top">
+          <div class="bcard-name">Markets4You</div>
+          <div class="bcard-badges"><span class="badge badge-reg">Regulated</span></div>
+        </div>
+      </div>
+      <div class="wikifx-rating">
+        <div class="wfx-left">
+          <div>
+            <div class="wfx-score mid">6.90</div>
+            <div class="wfx-label">WikiFX Score</div>
+          </div>
+          <div class="wfx-stars">
+            <span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star empty">★</span>
+          </div>
+        </div>
+        <div class="wfx-source">Sumber: <a href="https://www.wikifx.com" target="_blank">WikiFX</a></div>
+      </div>
+      <div class="bcard-info">
+        <div class="binfo-item"><div class="binfo-label">Min Deposit</div><div class="binfo-val">$1</div></div>
+        <div class="binfo-item"><div class="binfo-label">Spread</div><div class="binfo-val">0.0 pips</div></div>
+        <div class="binfo-item"><div class="binfo-label">Leverage</div><div class="binfo-val">1:1000</div></div>
+        <div class="binfo-item"><div class="binfo-label">Regulasi</div><div class="binfo-val">FSC</div></div>
+        <div class="binfo-item"><div class="binfo-label">Platform</div><div class="binfo-val">MT4/MT5</div></div>
+        <div class="binfo-item"><div class="binfo-label">Didirikan</div><div class="binfo-val">2007</div></div>
+      </div>
+      <div class="bcard-tags"><span class="btag">ECN</span><span class="btag">Bonus</span><span class="btag">MT4/MT5</span></div>
+      <a href="https://www.markets4you.online/?affid=zedrobx" target="_blank" rel="noopener" class="bcard-cta"><span>Buka Akun Markets4You →</span></a>
+    </div>
+
+    <!-- VALETAX -->
+    <div class="bcard" data-cat="regulated lowdeposit">
+      <div class="bcard-head">
+        <div class="bcard-top">
+          <div class="bcard-name">Valetax</div>
+          <div class="bcard-badges"><span class="badge badge-reg">Regulated</span></div>
+        </div>
+      </div>
+      <div class="wikifx-rating">
+        <div class="wfx-left">
+          <div>
+            <div class="wfx-score mid">6.40</div>
+            <div class="wfx-label">WikiFX Score</div>
+          </div>
+          <div class="wfx-stars">
+            <span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star">★</span><span class="wfx-star empty">★</span><span class="wfx-star empty">★</span>
+          </div>
+        </div>
+        <div class="wfx-source">Sumber: <a href="https://www.wikifx.com" target="_blank">WikiFX</a></div>
+      </div>
+      <div class="bcard-info">
+        <div class="binfo-item"><div class="binfo-label">Min Deposit</div><div class="binfo-val">$1</div></div>
+        <div class="binfo-item"><div class="binfo-label">Spread</div><div class="binfo-val">0.1 pips</div></div>
+        <div class="binfo-item"><div class="binfo-label">Leverage</div><div class="binfo-val">1:1000</div></div>
+        <div class="binfo-item"><div class="binfo-label">Regulasi</div><div class="binfo-val">VFSC</div></div>
+        <div class="binfo-item"><div class="binfo-label">Platform</div><div class="binfo-val">MT4/MT5</div></div>
+        <div class="binfo-item"><div class="binfo-label">Didirikan</div><div class="binfo-val">2020</div></div>
+      </div>
+      <div class="bcard-tags"><span class="btag">Baru</span><span class="btag">Bonus</span><span class="btag">MT4/MT5</span></div>
+      <a href="https://ma.valetax.com/p/1364742" target="_blank" rel="noopener" class="bcard-cta"><span>Buka Akun Valetax →</span></a>
+    </div>
+
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <div class="disclaimer-box">
+      <strong>⚠️ Disclaimer:</strong> Konten di halaman ini bersifat informatif dan bukan merupakan saran investasi. Rating broker bersumber dari WikiFX dan dapat berubah sewaktu-waktu. Beberapa link di halaman ini merupakan link afiliasi — Top1Percent dapat menerima komisi jika kamu mendaftar melalui link tersebut, tanpa biaya tambahan dari kamu. Selalu lakukan riset mandiri sebelum memilih broker. Trading forex mengandung risiko tinggi.
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom">
+      <div class="footer-logo"><span class="ng">TOP</span>1<span class="ng">PERCENT</span></div>
+      <div class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="exchange.html">Exchange</a>
+        <a href="propfirm.html">PropFirm</a>
+        <a href="news.html">News</a>
+        <a href="kalkulator.html">Kalkulator</a>
+        <a href="https://discord.gg/Tc5GqnVwdm" target="_blank">Discord</a>
+      </div>
+      <div class="footer-copy">© 2025 Top1Percent · top1percent.my.id</div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu(){
+      const m=document.getElementById('navMobile');
+      const b=document.getElementById('hamBtn');
+      m.classList.toggle('open');
+      b.textContent=m.classList.contains('open')?'✕':'☰';
+    }
+    document.addEventListener('click',e=>{
+      const m=document.getElementById('navMobile');
+      const b=document.getElementById('hamBtn');
+      if(!m.contains(e.target)&&!b.contains(e.target)){m.classList.remove('open');b.textContent='☰';}
+    });
+    function filterBroker(cat,btn){
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.bcard').forEach(card=>{
+        if(cat==='all'){card.style.display='flex';}
+        else{card.style.display=card.dataset.cat&&card.dataset.cat.includes(cat)?'flex':'none';}
+      });
+    }
+    // Fade in
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.05});
+    document.querySelectorAll('.bcard').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';obs.observe(el);});
+  </script>
+</body>
+</html>
